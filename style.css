@@ -1,0 +1,104 @@
+body {
+  background-image: url('https://media.discordapp.net/attachments/1252234983741984881/1374127113829089402/StarStable_2025-05-19_21-17-01.png?ex=683ac2d9&is=68397159&hm=e615d2ee70b8cc41f7ea8c74ac9586b270379598ed126f8e960700e1cf33e5a5&=&format=webp&quality=lossless');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gallery Styling */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 1rem;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Apply Now Button Enhancements */
+.apply-button {
+  background-color: #ec4899; /* Tailwind pink-500 */
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.apply-button:hover {
+  background-color: #db2777; /* Tailwind pink-600 */
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.6);
+}
+
+
+.nav-menu a.nav-link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #f472b6; /* Tailwind's pink-400 */
+  transition: width 0.3s ease;
+}
+
+.nav-menu a.nav-link:hover {
+  color: #f9a8d4; /* Tailwind's pink-300 */
+}
+
+.nav-menu a.nav-link:hover::after {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}

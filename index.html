@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Queenies – Star Stable</title>
+
+  <!-- Google Font: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Apply Poppins font throughout */
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-white relative">
+
+  <!-- Semi-transparent black overlay -->
+  <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+
+  <header class="relative z-10 p-6 flex justify-between items-center fade-in-up">
+    <h1 class="text-3xl font-bold">The Queenies</h1>
+    <nav class="nav-menu space-x-6 text-lg flex gap-6">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#apply" class="nav-link">Apply</a>
+      <a href="uniform.html" class="nav-link">Team Uniform</a>
+    </nav>
+  </header>
+
+  <main class="relative z-10 mt-20 px-6 fade-in-up">
+    <section class="text-center py-20">
+      <h2 class="text-5xl font-extrabold mb-4">Welcome to The Queenies</h2>
+      <p class="text-xl max-w-2xl mx-auto">
+        Founded By: ⋆₊˚ 𝐑𝐨 - Rei Faring
+      </p>
+    </section>
+
+    <section id="about" class="py-20 fade-in-up">
+      <div class="max-w-4xl mx-auto glass p-10 rounded-xl">
+        <h3 class="text-3xl font-bold mb-4">About Us</h3>
+        <p>
+          We Are A SSO 17+ Hangout And Dressage Team Based On A Pink Royal Theme,
+          We Were Created On The 5th December, 23’ By Ro, Caroline Whalelake
+          Revamped On The 13th September 24’ By Caroline Whalelake. We Are Located
+          On The UK Server Cupcake Valley.
+        </p>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-20 fade-in-up">
+      <div class="text-center">
+        <h3 class="text-3xl font-bold mb-6">Gallery</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+          <div class="gallery-item">
+            <img
+              src="https://media.discordapp.net/attachments/1252234983741984881/1374846086937579661/StarStable_2025-05-21_20-51-12.png?ex=683abd72&is=68396bf2&hm=752776e09b2dc3599c19a7b574de9a08dee20ea9f91edb1fdfd9975b6a693ef4&=&format=webp&quality=lossless"
+              alt="Star Stable 1"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://media.discordapp.net/attachments/1252234983741984881/1374846087306674296/StarStable_2025-05-21_20-47-29.png?ex=683abd72&is=68396bf2&hm=1a0c158f17fda603d15c59b47e46b49681d7a96ef87817fcf472c989bc511804&=&format=webp&quality=lossless"
+              alt="Star Stable 2"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://media.discordapp.net/attachments/1252234983741984881/1374127114965749770/StarStable_2025-05-19_20-47-25.png?ex=683ac2da&is=6839715a&hm=e80a901fe1cd2a6c27744b341713785c7a392d477a0d45403223d63f98f34574&=&format=webp&quality=lossless"
+              alt="Star Stable 3"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="py-20 fade-in-up">
+      <div class="max-w-xl mx-auto glass p-10 rounded-xl text-center">
+        <h3 class="text-3xl font-bold mb-4">Apply Now</h3>
+        <p class="mb-6">
+          Think you’ve got what it takes to join The Queens? We’re always looking
+          for talented, kind, and committed riders.
+        </p>
+        <a
+          href="https://discord.gg/YOUR-INVITE"
+          target="_blank"
+          class="apply-button inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200"
+        >
+          Join Our Discord
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 text-center py-6 bg-black bg-opacity-40 mt-10">
+    &copy; 2025 The Queens. All rights reserved.
+  </footer>
+</body>
+</html>
