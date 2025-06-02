@@ -13,67 +13,137 @@
   <link rel="stylesheet" href="style.css?v=1.0">
 
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    /* Responsive tweaks for instructor grid and images */
-    @media (max-width: 1024px) {
-      .max-w-4xl {
-        max-width: 95vw !important;
-      }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #f9a8d4 0%, #f472b6 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    @media (max-width: 768px) {
-      .glass {
-        padding: 1.5rem !important;
-      }
-      .grid-cols-1.sm\:grid-cols-2 {
-        grid-template-columns: 1fr !important;
-      }
-      .flex.items-center.gap-5.glass.p-5.rounded-xl {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        width: 100%;
-      }
-      .flex.items-center.gap-6.mb-4 {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-      }
-      .w-24, .w-20, .h-24, .h-20 {
-        width: 4.5rem !important;
-        height: 4.5rem !important;
-      }
+    .bg-hero {
+      background-image: url('assets/background/tq1.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
     }
-    @media (max-width: 480px) {
-      .glass {
-        padding: 1rem !important;
-      }
-      h2, h3 {
-        font-size: 1.3rem !important;
-      }
-      .text-xl, .text-lg {
-        font-size: 1rem !important;
-      }
+    .bg-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(236, 72, 153, 0.55), rgba(30, 27, 75, 0.7));
+      z-index: 0;
+      border-radius: 0 0 3rem 3rem;
     }
-    /* Make instructor cards auto-size and fill available space nicely */
-    .auto-rows-fr {
-      grid-auto-rows: 1fr;
+    .glass {
+      background: rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 12px 40px 0 rgba(236, 72, 153, 0.18);
     }
-    /* Instructor card hover animation */
-    .instructor-card {
-      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+    .fade-in-up {
+      animation: fadeInUp 1.1s cubic-bezier(.23,1.01,.32,1) forwards;
     }
-    .instructor-card:hover {
-      transform: scale(1.05) translateY(-4px);
-      box-shadow: 0 16px 40px rgba(236, 72, 153, 0.25), 0 2px 8px rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.13);
-      border-color: #f472b6;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .instructor-card:hover img {
-      transform: scale(1.10) rotate(-2deg);
-      box-shadow: 0 8px 24px #f472b6aa;
-      border-color: #f472b6;
+    .nav-link {
+      position: relative;
+      color: #fff;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%) scaleX(0);
+      width: 80%;
+      height: 2.5px;
+      background: linear-gradient(90deg, #f9a8d4 0%, #ec4899 100%);
+      border-radius: 2px;
+      transition: transform 0.3s;
+      transform-origin: center center;
+    }
+    .nav-link:hover {
+      color: #f9a8d4;
+    }
+    .nav-link:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+    .section-title {
+      font-size: 2.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-shadow: 0 2px 16px #ec4899cc;
+      margin-bottom: 2.5rem;
+    }
+    .owner-card, .instructor-card {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 32px 0 rgba(236, 72, 153, 0.13);
+      padding: 2.5rem 2rem 2rem 2rem;
+      margin-bottom: 2.5rem;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .owner-card:hover, .instructor-card:hover {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 8px 40px 0 #f472b6cc;
+    }
+    .owner-img, .instructor-img {
+      width: 6.5rem;
+      height: 6.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #f9a8d4;
+      box-shadow: 0 4px 24px #f472b6aa;
+      margin-bottom: 1.2rem;
+      background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .owner-card:hover .owner-img, .instructor-card:hover .instructor-img {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 8px 32px #f472b6cc;
+      border-color: #fff;
+    }
+    .owner-name, .instructor-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #f9a8d4;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px #ec4899cc;
+    }
+    .owner-role, .instructor-role {
+      color: #f472b6;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+    }
+    .owner-desc, .instructor-desc {
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.2rem;
+    }
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) {
+      .section-title { font-size: 2rem; }
+      .glass { padding: 1.2rem; }
+      .owner-card, .instructor-card { padding: 1.2rem; }
+      .instructors-grid { gap: 1rem; }
     }
   </style>
 </head>
@@ -90,65 +160,49 @@
     </header>
 
     <main class="flex-grow mt-20 px-6 fade-in-up">
-      <section class="py-20">
-        <div class="max-w-4xl w-full md:w-11/12 sm:w-full mx-auto glass p-6 md:p-10 lg:p-12 rounded-2xl">
-          <h2 class="text-4xl font-extrabold mb-12 text-center tracking-tight text-pink-500">
-            ⋆˚ Meet the Owner & Instructors ₊‧
-          </h2>
+      <section class="py-16">
+        <div class="max-w-4xl mx-auto glass p-8 rounded-3xl">
+          <h2 class="section-title text-center mb-10">⋆˚ Meet the Owner & Instructors ₊‧</h2>
 
           <!-- Owner Section -->
-          <div class="mb-12">
-            <h3 class="text-2xl font-semibold mb-6 border-b-2 border-pink-500 pb-2 text-pink-500">Owner</h3>
-            <div class="flex items-center gap-6 mb-4">
-              <img src="assets/background/tq1.png" alt="Owner" class="w-24 h-24 rounded-full object-cover border-4 border-pink-400 shadow-lg" />
-              <div>
-                <p class="text-xl font-bold">⋆₊˚ 𝐑𝐨 - 𝐑𝐞𝐢 𝐅𝐚𝐫𝐢𝐧𝐠</p>
-                <p class="text-pink-300">Founder & Owner</p>
-                <p class="mt-2 text-base">I went to music college for 3 years for singing and now have 2 music diploma (my only flex).. I can also play the guitar and piano both of which I have at home. I am a huge book lover ans I have over 100% books, mostly fantasy and dark romance, and my fave channel within this server is book nook.</p>
-              </div>
-            </div>
+          <div class="owner-card text-center mb-12">
+            <img src="assets/background/tq1.png" alt="Owner" class="owner-img" />
+            <div class="owner-name">⋆₊˚ 𝐑𝐨 - 𝐑𝐞𝐢 𝐅𝐚𝐫𝐢𝐧𝐠</div>
+            <div class="owner-role">Founder & Owner</div>
+            <div class="owner-desc">I went to music college for 3 years for singing and now have 2 music diploma (my only flex).. I can also play the guitar and piano both of which I have at home. I am a huge book lover and I have over 100 books, mostly fantasy and dark romance, and my fave channel within this server is book nook.</div>
           </div>
 
           <!-- Instructors Section -->
-          <div>
-            <h3 class="text-2xl font-semibold mb-6 border-b-2 border-pink-500 pb-2 text-pink-500">Instructors</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 auto-rows-fr">
-              <!-- Instructor 1 -->
-              <div class="flex items-center gap-5 glass p-5 rounded-xl instructor-card transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/40 hover:shadow-2xl">
-                <img src="assets/background/tq2.png" alt="Instructor 1" class="w-20 h-20 rounded-full object-cover border-4 border-pink-300 shadow-md transition-transform duration-300 hover:scale-110" />
-                <div>
-                  <p class="text-lg font-bold">⋆₊˚ 𝐋𝐨𝐮 - Naomi Northbell</p>
-                  <p class="text-pink-300">Instructor</p>
-                  <p class="mt-1 text-sm">Coming Soon</p>
-                </div>
-              </div>
-              <!-- Instructor 2 -->
-              <div class="flex items-center gap-5 glass p-5 rounded-xl instructor-card transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/40 hover:shadow-2xl">
-                <img src="assets/background/tq3.png" alt="Instructor 2" class="w-20 h-20 rounded-full object-cover border-4 border-pink-300 shadow-md transition-transform duration-300 hover:scale-110" />
-                <div>
-                  <p class="text-lg font-bold">⋆₊˚ 𝐆𝐫𝐚𝐧𝐧𝐲 𝐒𝐮𝐞 - Lola Blueberry</p>
-                  <p class="text-pink-300">Instructor</p>
-                  <p class="mt-1 text-sm"> hello I am Roxy but now I’m known as granny sue lol, I’ve been here about a month and a half now which feels like it’s been a lot longer.</p>
-                </div>
-              </div>
-              <!-- Instructor 3 -->
-              <div class="flex items-center gap-5 glass p-5 rounded-xl instructor-card transition-transform duration-300 hover:scale-105 hover:shadow-pink-400/40 hover:shadow-2xl">
-                <img src="assets/background/tq3.png" alt="Instructor 3" class="w-20 h-20 rounded-full object-cover border-4 border-pink-300 shadow-md transition-transform duration-300 hover:scale-110" />
-                <div>
-                  <p class="text-lg font-bold">⋆₊˚ 𝐌𝐨𝐭𝐡𝐞𝐫 𝐄𝐥 - Rosalie Wolfwave</p>
-                  <p class="text-pink-300">Leader & Instructor</p>
-                  <p class="mt-1 text-sm">hihi im el, im 19 and im currently a childcare apprentice so im usually inactive during the week. i own 3 horses & 3 dogs (basically another full time job).</p>
-                </div>
-              </div>
+          <h3 class="section-title text-center mb-8" style="font-size:2rem;">Instructors</h3>
+          <div class="instructors-grid">
+            <!-- Instructor 1 -->
+            <div class="instructor-card text-center">
+              <img src="assets/background/tq2.png" alt="Instructor 1" class="instructor-img" />
+              <div class="instructor-name">⋆₊˚ 𝐋𝐨𝐮 - Naomi Northbell</div>
+              <div class="instructor-role">Instructor</div>
+              <div class="instructor-desc">Coming Soon</div>
+            </div>
+            <!-- Instructor 2 -->
+            <div class="instructor-card text-center">
+              <img src="assets/background/tq3.png" alt="Instructor 2" class="instructor-img" />
+              <div class="instructor-name">⋆₊˚ 𝐆𝐫𝐚𝐧𝐧𝐲 𝐒𝐮𝐞 - Lola Blueberry</div>
+              <div class="instructor-role">Instructor</div>
+              <div class="instructor-desc">hello I am Roxy but now I’m known as granny sue lol, I’ve been here about a month and a half now which feels like it’s been a lot longer.</div>
+            </div>
+            <!-- Instructor 3 -->
+            <div class="instructor-card text-center">
+              <img src="assets/background/tq3.png" alt="Instructor 3" class="instructor-img" />
+              <div class="instructor-name">⋆₊˚ 𝐌𝐨𝐭𝐡𝐞𝐫 𝐄𝐥 - Rosalie Wolfwave</div>
+              <div class="instructor-role">Leader & Instructor</div>
+              <div class="instructor-desc">hihi im el, im 19 and im currently a childcare apprentice so im usually inactive during the week. i own 3 horses & 3 dogs (basically another full time job).</div>
             </div>
           </div>
-
         </div>
       </section>
     </main>
 
-    <footer class="py-6 text-center bg-black bg-opacity-50 border-t border-pink-700 mt-10">
-      <p class="text-pink-300 font-medium">&copy; 2025 The Queens. All rights reserved.</p>
+    <footer class="footer text-center">
+      <p>&copy; 2025 The Queens. All rights reserved.</p>
     </footer>
   </div>
 </body>
